@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "frontend-design",
+    "category": "design",
+    "name": "frontend-design",
+    "trigger": "building or reshaping any UI",
+    "description": "Distinctive visual direction: named palette, deliberate type pairing, and one aesthetic risk per brief."
+  },
+  {
+    "slug": "dataviz",
+    "category": "design",
+    "name": "dataviz",
+    "trigger": "before writing any chart, graph, or dashboard code",
+    "description": "One consistent visual system for data: color formula, mark specs, accessible-by-default palettes."
+  },
+  {
+    "slug": "artifact-design",
+    "category": "design",
+    "name": "artifact-design",
+    "trigger": "publishing an Artifact page",
+    "description": "Calibrates how much design investment a given artifact request actually warrants."
+  },
+  {
+    "slug": "decision-checkpoints",
+    "category": "workflow",
+    "name": "decision-checkpoints",
+    "trigger": "long autonomous runs that hit a real design fork",
+    "description": "Pause and ask at genuine forks instead of silently guessing or free-texting a question."
+  },
+  {
+    "slug": "code-review",
+    "category": "workflow",
+    "name": "code-review",
+    "trigger": "reviewing a working diff before merge",
+    "description": "Structured review pass over changed code, findings ranked by severity, verified before reporting."
+  },
+  {
+    "slug": "simplify",
+    "category": "workflow",
+    "name": "simplify",
+    "trigger": "after a feature lands and needs a cleanup pass",
+    "description": "Cuts duplication, dead abstraction, and premature generality from just-changed code only."
+  },
+  {
+    "slug": "update-config",
+    "category": "dev-tools",
+    "name": "update-config",
+    "trigger": "\"allow X\", \"add permission\", \"when Claude stops, do Y\"",
+    "description": "Wires hooks, permissions, and env vars through settings.json instead of relying on memory."
+  },
+  {
+    "slug": "security-review",
+    "category": "dev-tools",
+    "name": "security-review",
+    "trigger": "pending changes touch auth, input handling, or infra",
+    "description": "Audits a diff for injection, auth, and OWASP-class issues before it ships."
+  },
+  {
+    "slug": "loop",
+    "category": "automation",
+    "name": "loop",
+    "trigger": "\"check this every 5 minutes\", recurring polling asks",
+    "description": "Runs a prompt or slash command on an interval, fixed or self-paced."
+  },
+  {
+    "slug": "schedule",
+    "category": "automation",
+    "name": "schedule",
+    "trigger": "\"remind me tomorrow at 9am\", recurring cloud agents",
+    "description": "Creates and manages cron-based routines that run independent of an open session."
+  },
+  {
+    "slug": "project-tracking-docs",
+    "category": "docs",
+    "name": "project-tracking-docs",
+    "trigger": "start of a feature, fix, or refactor",
+    "description": "Keeps a PLAN/BUGFIX doc current automatically as implementation work lands, unasked."
+  },
+  {
+    "slug": "claude-api",
+    "category": "docs",
+    "name": "claude-api",
+    "trigger": "questions about model IDs, pricing, streaming, tool use",
+    "description": "Reference for the Claude API and Anthropic SDK — caching, token counting, migrations."
+  }
+]

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>claude-skills</title>
+<meta name="description" content="A directory of Claude skills and the conditioning patterns used to tune them." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230A0F0C%22/><text x=%2250%25%22 y=%2258%25%22 font-size=%2260%22 fill=%22%235EE6A0%22 text-anchor=%22middle%22 font-family=%22monospace%22>&gt;</text></svg>" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-path">~/claude-skills</span><span class="brand-cursor" aria-hidden="true">_</span>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button class="tab is-active" role="tab" aria-selected="true" id="tab-skills" data-view="skills">skills</button>
+    <button class="tab" role="tab" aria-selected="false" id="tab-patterns" data-view="patterns">conditioning patterns</button>
+  </nav>
+  <div class="status" aria-hidden="true"><span class="status-dot"></span>ready</div>
+</header>
+
+<section class="hero" id="hero" aria-label="Live example of a skill being matched to a request">
+  <div class="hero-inner">
+    <p class="hero-line hero-line--prompt">
+      <span class="hero-glyph">$</span>
+      <span id="heroPrompt" class="hero-typed"></span><span class="hero-caret" aria-hidden="true">▍</span>
+    </p>
+    <p class="hero-line hero-line--result" id="heroResult" aria-live="polite"></p>
+  </div>
+</section>
+
+<main class="layout">
+
+  <aside class="rail" id="railSkills" aria-label="Filter skills by category">
+    <p class="rail-label">directory</p>
+    <ul class="rail-list" id="categoryList"></ul>
+  </aside>
+
+  <aside class="rail" id="railPatterns" hidden aria-label="Jump to a conditioning pattern">
+    <p class="rail-label">index</p>
+    <ul class="rail-list" id="patternIndex"></ul>
+  </aside>
+
+  <div class="content" id="viewSkills">
+    <div class="content-head">
+      <label class="search" for="searchInput">
+        <span class="search-glyph">$ grep</span>
+        <input id="searchInput" type="text" placeholder="skill name, trigger, or description…" autocomplete="off" />
+      </label>
+      <p class="content-count" id="resultCount"></p>
+      <button class="new-btn" type="button" id="newSkillBtn">+ new skill</button>
+    </div>
+    <p class="load-state" id="loadState" hidden></p>
+    <div class="grid" id="skillGrid"></div>
+    <p class="empty-state" id="emptyState" hidden>no matches — try a different filter or clear <button class="link-btn" id="clearSearch">$ grep -v .</button></p>
+  </div>
+
+  <div class="content" id="viewPatterns" hidden>
+    <div class="content-head">
+      <p class="content-lede">Reusable prompt-shaping moves for tuning how a skill behaves — what to name explicitly rather than leave implied.</p>
+    </div>
+    <article class="pattern-card" id="commands"></article>
+    <article class="pattern-card" id="models"></article>
+    <div class="pattern-list" id="patternList"></div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <p>claude-skills · MVP · backed by a local Flask API</p>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <form class="modal" id="skillForm" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h2 class="modal-title" id="modalTitle">new skill</h2>
+
+    <label class="field">
+      <span class="field-label">name</span>
+      <input class="field-input" id="fieldName" name="name" type="text" maxlength="80" required autocomplete="off" />
+    </label>
+
+    <label class="field">
+      <span class="field-label">category</span>
+      <select class="field-input" id="fieldCategory" name="category" required></select>
+    </label>
+
+    <label class="field">
+      <span class="field-label">trigger</span>
+      <input class="field-input" id="fieldTrigger" name="trigger" type="text" maxlength="140" required autocomplete="off"
+        placeholder="when should this activate?" />
+    </label>
+
+    <label class="field">
+      <span class="field-label">description</span>
+      <textarea class="field-input" id="fieldDescription" name="description" maxlength="400" rows="3" required></textarea>
+    </label>
+
+    <p class="field-error" id="formError" hidden></p>
+
+    <div class="modal-actions">
+      <button type="button" class="btn-ghost" id="modalCancel">cancel</button>
+      <button type="submit" class="btn-primary" id="modalSubmit">save</button>
+    </div>
+  </form>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
